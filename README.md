@@ -5,7 +5,7 @@
 4. Vous ne devez utiliser que du CSS personnalisé et du JavaScript pur, sans jQuery, Bootstrap ou autre librairie.
 
 ## Issues
-### 1. TODO : fermer la modale : Ajouter la fonctionnalité au bouton (x)
+### 1. TODO : fermer la modale : 	~~Ajouter la fonctionnalité au bouton (x)~~
 ### 2. Implémenter entrées du formulaire :
 (1) Lier les labels aux entrées dans le HTML en utilisant les attributs "for" et "id" dans le code existant. Corriger le code HTML quand nécessaire.
 (2) Utiliser du JavaScript pur (pas de jQuery) pour terminer le formulaire :
