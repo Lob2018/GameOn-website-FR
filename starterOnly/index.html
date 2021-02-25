@@ -55,24 +55,24 @@
                 <div class="modal-body">
                     <form name="reserve" action="index.html" method="get" onsubmit="return validate();">
                         <div class="formData">
-                            <label>Prénom</label><br>
-                            <input class="text-control" type="text" id="first" name="first" minlength="2" /><br>
+                            <label for="prenom">Prénom</label><br>
+                            <input id="prenom" class="text-control" type="text" id="first" name="first" minlength="2" required/><br>
                         </div>
                         <div class="formData">
-                            <label>Nom</label><br>
-                            <input class="text-control" type="text" id="last" name="last" /><br>
+                            <label for="nom">Nom</label><br>
+                            <input id="nom" class="text-control" type="text" id="last" name="last" minlength="2" required/><br>
                         </div>
                         <div class="formData">
-                            <label>E-mail</label><br>
-                            <input class="text-control" type="email" id="email" name="email" /><br>
+                            <label for="mail">E-mail</label><br>
+                            <input id="mail" class="text-control" type="email" id="email" name="email" required/><br>
                         </div>
                         <div class="formData">
-                            <label>Date de naissance</label><br>
-                            <input class="text-control" type="date" id="birthdate" name="birthdate" /><br>
+                            <label for="DateNaissance">Date de naissance</label><br>
+                            <input id="DateNaissance" class="text-control" type="date" id="birthdate" name="birthdate" /><br>
                         </div>
                         <div class="formData">
-                            <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                            <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                            <label for="combienTournois">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
+                            <input id="combienTournois" type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" required>
                         </div>
                         <p class="text-label">Quelles villes ?</p>
                         <div class="formData">
