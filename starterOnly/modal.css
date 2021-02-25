@@ -529,6 +529,14 @@ input[data-error]::after {
     display: none;
 }
 
+.error {
+    margin-top: 0.4rem;
+    display: none;
+    font-weight: lighter;
+    color: red;
+    font-size: 12px;
+}
+
 footer {
     padding-left: 2vw;
     padding-right: 2vw;

@@ -4,10 +4,12 @@
 3. Il n'y a aucune dépendance ;
 4. Vous ne devez utiliser que du CSS personnalisé et du JavaScript pur, sans jQuery, Bootstrap ou autre librairie.
 
+[Lien GitHub Pages](https://lob2018.github.io/GameOn-website-FR/starterOnly/index.html)
+
 ## Issues
 ### 1. TODO : fermer la modale : 	~~Ajouter la fonctionnalité au bouton (x)~~
-### 2. Implémenter entrées du formulaire :
-~~(1) Lier les labels aux entrées dans le HTML en utilisant les attributs "for" et "id" dans le code existant. Corriger le code HTML quand nécessaire.
+### 2. ~~Implémenter entrées du formulaire~~ :
+(1) Lier les labels aux entrées dans le HTML en utilisant les attributs "for" et "id" dans le code existant. Corriger le code HTML quand nécessaire.
 (2) Utiliser du JavaScript pur (pas de jQuery) pour terminer le formulaire :
 - Le formulaire doit être valide quand l'utilisateur clique sur "Submit"
 - Les données doivent être saisies correctement :
@@ -17,8 +19,8 @@
   - (4) Pour le nombre de concours, une valeur numérique est saisie.
   - (5) Un bouton radio est sélectionné.
   - (6) La case des conditions générales est cochée, l'autre case est facultative / peut être laissée décochée.
-- Conserver les données du formulaire (ne pas effacer le formulaire) lorsqu'il ne passe pas la validation.~~
-### 3. Ajouter validation ou messages d'erreur :
+- Conserver les données du formulaire (ne pas effacer le formulaire) lorsqu'il ne passe pas la validation.
+### 3. ~~Ajouter validation ou messages d'erreur~~ :
 Des messages d'erreur spécifiques doivent apparaître sous l'entrée qui n'est pas correcte. Les messages d'erreur doivent s'afficher sous le champ de saisie associé. Exemples :
 - "Veuillez entrer 2 caractères ou plus pour le champ du nom."
 - "Vous devez choisir une option."
