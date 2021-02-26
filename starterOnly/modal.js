@@ -9,9 +9,12 @@ function editNav() {
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
+const modalbgII = document.querySelector(".bgroundII");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-const modalBtnCLose = document.querySelector(".close");
+const modalBtnClose = document.querySelector(".close");
+const modalBtnCloseII = document.querySelector(".closeII");
+const modalBtnCloseIII = document.querySelector(".btn-submitII");
 const formVilles = document.getElementsByName("location");
 const formTerms = document.getElementById('checkbox1');
 const formTermsError = document.getElementById('errorTerms');
@@ -23,7 +26,7 @@ const formInputs = [
     document.getElementById('combienTournois')
 ];
 const formVillesError = document.getElementById('errorVilles');
-
+const form = document.forms[0];
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -33,25 +36,48 @@ function launchModal() {
     modalbg.style.display = "block";
 }
 
+// launch modalII 
+function launchModalII() {
+    modalbgII.style.display = "block";
+}
+
 // close modal event
-modalBtnCLose.addEventListener("click", closeModal);
+modalBtnClose.addEventListener("click", closeModal);
 
 // close modal form
 function closeModal() {
     modalbg.style.display = "none";
 }
 
+// close modalII event
+modalBtnCloseII.addEventListener("click", closeModalII);
+
+// close modalII event (button)
+modalBtnCloseIII.addEventListener("click", closeModalII);
+
+// close modal form
+function closeModalII() {
+    modalbgII.style.display = "none";
+}
+
 // the form validation //
 function validate() {
+    // check all inputs error
+    for (let input of formInputs) {
+        if (!input.validity.valid) return false;
+    }
+
     // one town is selected
-    let ville = isOneTownSelected();
+    if (!isOneTownSelected()) return false;
 
     // terms are validated
-    let terms = isValidatedTerms();
+    if (!isValidatedTerms()) return false;
 
-    // send if the form is valid
-    return (ville && terms);
+    closeModal();
+    launchModalII();
 }
+
+
 
 // is one town selected
 function isOneTownSelected() {
@@ -80,7 +106,6 @@ function isValidatedTerms() {
 for (let i = 0; i < formInputs.length; i++) {
     formInputs[i].addEventListener('invalid', function(e) {
         e.preventDefault();
-        e.stopPropagation();
         checkInputsErrors(formInputs[i]);
         validate();
     });
