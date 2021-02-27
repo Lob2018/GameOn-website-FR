@@ -244,12 +244,13 @@ input {
     margin-top: 0px;
     margin-bottom: 0px;
     text-align: left;
-    line-height: 0.3;
+    line-height: 0.3em;
     opacity: 0;
     transition: 0.3s;
 }
 
 .formData[data-error-visible="true"]::after {
+    line-height: 1.1em;
     margin-top: 12px;
     margin-bottom: 7px;
     opacity: 1;
