@@ -54,33 +54,28 @@
                 <span class="close"></span>
                 <div class="modal-body">
                     <form name="reserve" action="index.html" method="get" onsubmit="validate(); return false">
-                        <div class="formData">
+                        <div class="formData" data-error-visible="false" data-error="Veuillez entrer 2 caractères ou plus pour le champ du prénom.">
                             <label for="prenom">Prénom</label><br>
                             <input id="prenom" class="text-control" type="text" id="first" name="first" minlength="2" required/>
-                            <span class="error" id="errorPrenom">Veuillez entrer 2 caractères ou plus pour le champ du prénom.</span>
                         </div>
-                        <div class="formData">
+                        <div class="formData" data-error-visible="false" data-error="Veuillez entrer 2 caractères ou plus pour le champ du nom.">
                             <label for="nom">Nom</label><br>
                             <input id="nom" class="text-control" type="text" id="last" name="last" minlength="2" required/>
-                            <span class="error" id="errorNom">Veuillez entrer 2 caractères ou plus pour le champ du nom.</span>
                         </div>
-                        <div class="formData">
+                        <div class="formData" data-error-visible="false" data-error="Vous devez entrer votre adresse mail.">
                             <label for="mail">E-mail</label><br>
                             <input id="mail" class="text-control" type="email" id="email" name="email" required/>
-                            <span class="error" id="errorMail">Vous devez entrer votre adresse mail.</span>
                         </div>
-                        <div class="formData">
+                        <div class="formData formData--lg-error" data-error-visible="false" data-error="Vous devez entrer votre date de naissance.">
                             <label for="dateNaissance">Date de naissance</label><br>
                             <input id="dateNaissance" class="text-control" type="date" id="birthdate" name="birthdate" required/>
-                            <span class="error" id="errorDateNaissance">Vous devez entrer votre date de naissance.</span>
                         </div>
-                        <div class="formData">
+                        <div class="formData" data-error-visible="false" data-error="Vous devez spécifier le nombre de tournois auquels vous avez participé.">
                             <label for="combienTournois">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                             <input id="combienTournois" type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" required>
-                            <span class="error" id="errorCombienTournois">Vous devez spécifier le nombre de tournois auquels vous avez participé.</span>
                         </div>
                         <p class="text-label">Quelles villes ?</p>
-                        <div class="formData">
+                        <div class="formData" data-error-visible="false" data-error="Vous devez choisir une option.">
                             <input class="checkbox-input" type="radio" id="location1" name="location" value="New York" />
                             <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon"></span>
@@ -142,11 +137,9 @@
                   Portland</label
                 >
                 <br>
-                <span class="error" id="errorVilles">Vous devez choisir une option.<br></span>
               </div>
 
-              <div
-                class="formData">
+              <div class="formData formData--lg-error" data-error-visible="false" data-error="Vous devez vérifier que vous acceptez les termes et conditions.">
                 <input
                   class="checkbox-input"
                   type="checkbox"
@@ -158,8 +151,6 @@
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                             <br>
-                            <span class="error" id="errorTerms">Vous devez vérifier que vous acceptez les termes et conditions.</span>
-
                             <input class="checkbox-input" type="checkbox" id="checkbox2" />
                             <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>

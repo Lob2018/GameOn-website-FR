@@ -25,7 +25,6 @@ const formInputs = [
     document.getElementById('dateNaissance'),
     document.getElementById('combienTournois')
 ];
-const formVillesError = document.getElementById('errorVilles');
 const form = document.forms[0];
 
 // launch modal event
@@ -62,47 +61,53 @@ function closeModalII() {
 
 // the form validation //
 function validate() {
-    // check all inputs error
+    // variables to check
+    let validInputs, aTownSelected, validTerms;
+
+    // check all text inputs error
+    validInputs = true;
     for (let input of formInputs) {
-        if (!input.validity.valid) return false;
+        if (!input.validity.valid) validInputs = false;
     }
 
-    // one town is selected
-    if (!isOneTownSelected()) return false;
+    // check if one town's selected
+    aTownSelected = isOneTownSelected();
 
-    // terms are validated
-    if (!isValidatedTerms()) return false;
+    // check terms validation
+    validTerms = isValidatedTerms();
 
-    closeModal();
-    launchModalII();
+    // if it's ok send the form and the confirmation modal
+    if (validInputs && aTownSelected && validTerms) {
+        closeModal();
+        launchModalII();
+        return true;
+    } else return false;
 }
 
-
-
-// is one town selected
+// check if one town's selected
 function isOneTownSelected() {
     for (let ville of formVilles) {
+        ville.parentElement.setAttribute("data-error-visible", "true");
         if (ville.checked == true) {
-            formVillesError.style.display = 'none';
+            ville.parentElement.setAttribute("data-error-visible", "false");
             return true;
         }
     }
-    formVillesError.style.display = 'block';
     return false;
 }
 
-// are terms validated
+// check terms validation
 function isValidatedTerms() {
     if (formTerms.checked) {
-        formTermsError.style.display = 'none';
+        formTerms.parentElement.setAttribute("data-error-visible", "false");
         return true;
     } else {
-        formTermsError.style.display = 'block';
+        formTerms.parentElement.setAttribute("data-error-visible", "true");
         return false;
     }
 }
 
-// inputs listeners
+// inputs text listeners (invalid and blur)
 for (let i = 0; i < formInputs.length; i++) {
     formInputs[i].addEventListener('invalid', function(e) {
         e.preventDefault();
@@ -111,19 +116,15 @@ for (let i = 0; i < formInputs.length; i++) {
     });
     formInputs[i].addEventListener('blur', function(e) {
         checkInputsErrors(formInputs[i]);
-        validate();
     });
 }
 
-// check inputs errors
+// check inputs errors with the listeners
 function checkInputsErrors(el) {
-    if (el.nextElementSibling != null) {
-        if (el.validity.valid) {
-            el.nextElementSibling.style.display = 'none';
-            el.style.border = "none";
-        } else {
-            el.nextElementSibling.style.display = 'block';
-            el.style.border = "0.15rem solid #FF0000";
-        }
+    if (el.validity.valid) {
+        el.parentElement.setAttribute("data-error-visible", "false");
+    } else {
+        el.parentElement.setAttribute("data-error-visible", "true");
     }
+
 }
