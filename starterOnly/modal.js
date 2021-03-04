@@ -28,13 +28,16 @@ const formInputs = [
 const form = document.forms[0];
 
 // launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+modalBtn.forEach((btn) => btn.addEventListener("click",
+    function() {
+        form.reset();
+        launchModal();
+    }));
 
 // launch modal form
 function launchModal() {
     modalbg.style.display = "block";
 }
-
 // launch modalII 
 function launchModalII() {
     modalbgII.style.display = "block";
@@ -42,7 +45,6 @@ function launchModalII() {
 
 // close modal event
 modalBtnClose.addEventListener("click", closeModal);
-
 // close modal form
 function closeModal() {
     modalbg.style.display = "none";
@@ -50,10 +52,8 @@ function closeModal() {
 
 // close modalII event
 modalBtnCloseII.addEventListener("click", closeModalII);
-
 // close modalII event (button)
 modalBtnCloseIII.addEventListener("click", closeModalII);
-
 // close modal form
 function closeModalII() {
     modalbgII.style.display = "none";
@@ -63,26 +63,47 @@ function closeModalII() {
 function validate() {
     // variables to check
     let validInputs, aTownSelected, validTerms;
-
     // check all text inputs error
     validInputs = true;
     for (let input of formInputs) {
         if (!input.validity.valid) validInputs = false;
     }
-
     // check if one town's selected
     aTownSelected = isOneTownSelected();
-
     // check terms validation
     validTerms = isValidatedTerms();
 
     // if it's ok send the form and the confirmation modal
     if (validInputs && aTownSelected && validTerms) {
-        closeModal();
-        launchModalII();
-        return true;
+        sendData();
     } else return false;
 }
+
+// send the form data
+function sendData() {
+    let request = new XMLHttpRequest();
+    let formData = new FormData(form);
+    // When the request state change
+    request.onreadystatechange = function() {
+        // state 4 =DONE
+        if (this.readyState == 4 && this.status == 200) {
+            closeModal();
+            launchModalII();
+        }
+    };
+    // Set the request parameters
+    request.open("GET", "index.html");
+    // Set the request header
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    // Send the form data
+    request.send(formData);
+}
+
+// the form submit listener
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+    validate();
+});
 
 // check if one town's selected
 function isOneTownSelected() {
@@ -109,8 +130,8 @@ function isValidatedTerms() {
 
 // inputs text listeners (invalid and blur)
 for (let i = 0; i < formInputs.length; i++) {
-    formInputs[i].addEventListener('invalid', function(e) {
-        e.preventDefault();
+    formInputs[i].addEventListener('invalid', function(event) {
+        event.preventDefault();
         checkInputsErrors(formInputs[i]);
         validate();
     });
